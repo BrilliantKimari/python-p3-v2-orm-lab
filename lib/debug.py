@@ -4,7 +4,7 @@ from __init__ import CONN, CURSOR
 import random
 from department import Department
 from employee import Employee
-from review import Review
+from lib.review import Review
 import ipdb
 
 

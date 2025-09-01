@@ -1,6 +1,6 @@
 from employee import Employee, CONN, CURSOR
 from department import Department
-from review import Review
+from lib.review import Review
 import pytest
 
 
@@ -34,7 +34,7 @@ class TestReview:
         """
         CURSOR.execute(sql)
 
-        sql = """  
+        sql = """
             CREATE TABLE IF NOT EXISTS employees (
             id INTEGER PRIMARY KEY,
             name TEXT,
@@ -225,14 +225,14 @@ class TestReview:
                 (None, 2020, "Usually double checks their work", employee.id))
         # assert dictionary entry was deleted
         assert(Review.all.get(id1) is None)
-        
+
         review = Review.find_by_id(id2)
         # assert review2 row not modified, review2 object not modified
         assert ((review.id, review.year, review.summary, review.employee_id) ==
                 (review2.id, review2.year, review2.summary, review2.employee_id) ==
                 (id2, 2000, "Takes long lunches", employee.id))
 
-    
+
     def test_gets_all(self):
         '''contains method "get_all()" that returns a list of Review instances for every record in the db.'''
 
